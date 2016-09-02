@@ -1,0 +1,14 @@
+rm(list=ls())
+
+Z= read.csv(file="GE1.csv",header=1)
+
+plot(Z$Dist, Z$IMP)
+plot(log(Z$Dist), log(Z$IMP))
+
+lnIMP = log(Z$IMP)
+lnDist = log(Z$Dist)
+lnGDPexp = log(Z$GDPexp)
+lnGDPimp = log(Z$GDPimp)
+
+Result = lm(lnIMP ~ lnGDPexp + lnGDPimp + lnDist)
+summary(Result)
